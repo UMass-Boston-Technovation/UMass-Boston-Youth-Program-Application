@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UMass Boston Youth Program Application - Summary</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .no-print {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #0055a4;
+      /* UMass Blue */
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .button:hover {
+      background-color: #003d7a;
+      /* Darker UMass Blue */
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #005a9c;
+      /* UMass Blue */
+    }
+
+    .section {
+      margin-bottom: 30px;
+      position: relative;
+      /* For page numbers */
+    }
+
+    .section-header {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      text-decoration: underline;
+      color: #005a9c;
+    }
+
+    label {
+      /* Styles for labels if we keep them from index.html structure */
+      display: block;
+      margin: 5px 0;
+      font-weight: bold;
+    }
+
+    .response-value {
+      /* Class for the actual response text */
+      font-weight: normal;
+      display: inline;
+      /* To allow it to sit next to a label if needed */
+      padding-left: 5px;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .col {
+      flex: 1;
+    }
+
+    .page-break {
+      page-break-before: always;
+      margin-top: 0;
+      /* Reduce space */
+      margin-bottom: 0;
+      /* Reduce space */
+      height: 0;
+      /* Ensure no height */
+      border-top: 1px dashed #ccc;
+    }
+
+    .sig-line {
+      margin-top: 20px;
+      border-top: 1px solid #333;
+      padding-top: 5px;
+      min-height: 20px;
+      /* Ensure space for signature if empty */
+    }
+
+    .page-number {
+      position: fixed;
+      /* For screen */
+      bottom: 20px;
+      right: 20px;
+      background-color: #005a9c;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      z-index: 1000;
+      display: none;
+      /* Hidden by default, shown by JS for current screen page */
+    }
+
+    #google_translate_element {
+      margin: 15px 0;
+    }
+
+    .goog-te-combo {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      min-width: 200px;
+    }
+
+    @media print {
+      .no-print {
+        display: none;
+      }
+
+      body {
+        padding: 0;
+        font-size: 11pt;
+        /* Restored font size */
+        max-width: 100%;
+        line-height: 1.3;
+        /* Restored line height */
+      }
+
+      .section {
+        margin-bottom: 10px;
+        /* Keep reduced margin */
+      }
+
+      /* Remove specific print font size overrides for headings, let them be relative */
+      h1,
+      h2,
+      h3 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .section-header {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      /* Remove specific print font size overrides for p, pre, row */
+      p,
+      pre,
+      .row {
+        margin-top: 1px;
+        margin-bottom: 1px;
+        orphans: 2;
+        /* Keep orphan/widow control */
+        widows: 2;
+        /* line-height: 1.15; Removed, let it inherit or be 1.3 from body */
+      }
+
+      pre {
+        padding: 0;
+      }
+
+      /* Remove specific print font size overrides for label */
+      label {
+        margin: 1px 0;
+      }
+
+      /* Remove specific print font size overrides for response values */
+      .response-value,
+      .display-text,
+      .display-tel,
+      .display-date,
+      .display-textarea,
+      .display-select {
+        padding: 0 1px;
+        vertical-align: baseline;
+      }
+
+      .display-text,
+      .display-tel,
+      .display-date,
+      .display-textarea,
+      .display-select {
+        border: none;
+        min-height: auto;
+        background-color: transparent;
+      }
+
+      .sig-line {
+        margin-top: 10px;
+        padding-top: 2px;
+        min-height: 15px;
+        orphans: 2;
+        widows: 2;
+      }
+
+      /* Remove specific print font size for sig-line labels */
+
+      .page-number {
+        position: static;
+        display: block !important;
+        text-align: right;
+        background-color: transparent;
+        color: #333;
+        font-size: 9pt;
+        /* Restored page number font size */
+        padding: 0 0 1px 0;
+        margin: 3px 0 0 0;
+        z-index: auto;
+      }
+
+      .page-break {
+        /* HIDE explicit page breaks for print, let content flow naturally */
+        display: none;
+      }
+    }
+
+    /* Display classes for filled form elements */
+    .display-text,
+    .display-tel,
+    .display-date,
+    .display-textarea,
+    .display-select {
+      display: inline-block;
+      width: auto;
+      /* Adjust as needed, or let content flow */
+      padding: 2px 4px;
+      border: 1px solid #eee;
+      /* Light border to show field area */
+      min-height: 1.2em;
+      /* Ensure it's visible even if empty */
+      background-color: #f9f9f9;
+    }
+
+    .display-radio,
+    .display-checkbox {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="translate-box no-print">
+    <h2>Translate Summary</h2>
+    <p><strong>Required: Convert to English before printing.</strong> Select your language below. If English isn't
+      visible, pick another, then English will appear.</p>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <div class="no-print">
+    <h2>Form Submission Summary</h2>
+    <p>Review your answers. Print this page for your records after ensuring it's in English.</p>
+    <button class="button print-button" onclick="window.print()">
+      Print Summary
+    </button>
+    <button class="button" onclick="window.location.href='index.html'">
+      Return to Form
+    </button>
+  </div>
+
+  <header>
+    <img src="./umb.png" alt="UMass Boston Logo" class="logo" />
+    <h1>University of Massachusetts Boston</h1>
+    <h2>Youth Program Application 2025</h2>
+  </header>
+
+  <div id="filled-form-content">
+    <!-- Page 1 Content (mirrors index.html structure) -->
+    <div id="page1_summary" class="section">
+      <div class="page-number">Page 1 of 7</div>
+      <div class="section-header">Application Instructions</div>
+      <div><label>Participant's Name:</label> <span id="instr_participant_name"
+          class="response-value display-text"></span></div>
+      <div><label>Parent/Guardian Name (print):</label> <span id="instr_parent_name"
+          class="response-value display-text"></span></div>
+      <div class="row">
+        <div class="col"><label>Program Name:</label> <span id="instr_program_name"
+            class="response-value display-text"></span></div>
+        <div class="col"><label>Date Submitted:</label> <span id="instr_date_submitted"
+            class="response-value display-date"></span></div>
+      </div>
+      <p>If you are applying to a youth program at the University of Massachusetts Boston, please complete and mail the
+        completed application packet to the address below:</p>
+      <div><label>Program to Mail Application To:</label> <span id="instr_mail_program"
+          class="response-value display-text"></span></div>
+      <pre>University of Massachusetts Boston
+100 Morrissey Boulevard
+Boston, MA 02125</pre>
+      <p>Failure to complete all forms in the application may result in your child not being accepted into the youth
+        program.</p>
+      <p>Policies and Guidelines – Pg. 3</p>
+      <p>Personal, Family, and Emergency Contact Information – Pgs. 5-6</p>
+      <p>Release Forms – Pg. 7</p>
+      <p>Health History Packet</p>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 2 Content -->
+    <div id="page2_summary" class="section">
+      <div class="page-number">Page 2 of 7</div>
+      <div class="section-header">Permission and Certification</div>
+      <p>I, the undersigned, hereby give my permission for my son/daughter to participate in all the activities of the
+        <span id="perm_program_name" class="response-value display-text"></span> Program at UMass Boston from
+        the date of his/her acceptance throughout his/her involvement with the program.
+      </p>
+      <p>We (participant and I) agree to support the administrative rules of the <span id="perm_program_name_repeat"
+          class="response-value display-text"></span> Program, the below referenced UMass
+        Boston policies and guidelines, and to cooperate with the staff to our fullest extent.</p>
+      <p>Further, by signing below, I attest to the fact that all of the information provided by me or any other person
+        on this application is true and complete to the best of my knowledge.</p>
+      <div class="section-header">Policies and Guidelines</div>
+      <p><strong>Permission to Participate:</strong> When you signed your child's medical form, you gave permission for
+        your child to participate in all program activities. If you wish for your child to be restricted from any
+        activity, please notify us in writing prior to your child's program session. Please note that it is not our
+        policy to force any child to participate in an activity. We do our best to make the activity enjoyable so your
+        child will wish to participate.</p>
+      <p><strong>Medical Concerns:</strong> All participants are required to have a completed application packet
+        including UMass Boston's health history, immunizations, consent to treat minor patients, and authorization to
+        administer medication forms on file before the program begins. Please be sure that you complete these forms and
+        that your child's healthcare provider has signed that a physical examination has been conducted within the last
+        24 months. Please provide us with as much information as possible concerning your child's medical history,
+        allergies, medications, and any special needs. All medical forms must include an up-to-date immunization record
+        and must be signed by a healthcare provider. If these forms are not received at least 3 weeks prior to the
+        program start date your child may not be allowed to start the program.</p>
+      <p><strong>Medication:</strong> Every effort should be made to administer routine medications at home in order to
+        prevent disruption in your child's daily program activities. However, if your healthcare provider believes that
+        it is in the best medical interest of your child to administer them during the program's hours, please submit
+        the completed Authorization to Administer Medication form. A separate form must be completed for each
+        medication. State law does not permit administration of medication during the program hours without written
+        authority by the prescribing healthcare provider. Youth program participants are at no time allowed to carry
+        any kind of medication, be administered medication without official written directive from the prescribing
+        healthcare provider or take medication without direct youth program supervision.</p>
+      <p><strong>Weather Adjustments:</strong> Whenever possible, we bring outdoor activities into air-conditioned
+        facilities, or to cool, shaded areas. Our first concern is for your child's safety; therefore, we reserve the
+        right to take the following actions in very hot weather: reduce physical activities, substitute outdoor
+        activities for sedentary activities, and provide activities unrelated to your child's specialty (e.g., movies).
+      </p>
+      <p><strong>Inappropriate Behavior:</strong> UMass Boston reserves the right to dismiss any participant who acts in
+        an inappropriate or detrimental manner including bullying, harassing, intimidating, or threatening to other
+        individuals.</p>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 3 Content -->
+    <div id="page3_summary" class="section">
+      <div class="page-number">Page 3 of 7</div>
+      <p><strong>Medical Notification:</strong> It is our policy to notify you if your child becomes ill during the
+        youth program or suffers an injury other than minor bumps, bruises or scrapes.</p>
+      <p><strong>Valuables:</strong> We recommend that program participants not bring large sums of money or other
+        valuables to UMass Boston. The University is not responsible for lost or stolen personal items.</p>
+      <p><strong>Sunscreen:</strong> The use of sunscreen is highly recommended by University Health Services. It is
+        best to apply sunscreen to your child before he or she leaves home in the morning. You may wish to send along
+        additional sunscreen to be applied later in the day.</p>
+      <p><strong>Inappropriate Behavior:</strong> UMass Boston reserves the right to dismiss any participant who acts in
+        an inappropriate or detrimental manner including bullying, harassing, intimidating, or threatening to other
+        individuals.</p>
+      <div class="sig-line">
+        <div><label>Signature of Parent/Guardian:</label> <span id="gen_signature"
+            class="response-value display-text"></span></div>
+        <div><label>Date:</label> <span id="gen_date" class="response-value display-date"></span></div>
+      </div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 4 Content -->
+    <div id="page4_summary" class="section">
+      <div class="page-number">Page 4 of 7</div>
+      <div class="section-header">Personal Safety Policy</div>
+      <p>University Health Services reserves the right to limit or restrict a participant's ability to carry any item,
+        or wear clothing, deemed to pose a safety risk to the individual and/or others while participating in the
+        program. This includes, but is not limited to, weapons (whether real or fake), explosives, sharp objects
+        (including medical devices), inappropriate clothing or clothing with graphics deemed to be offensive. If the
+        participant or his/her parent or guardian refuses to abide by this policy the participant may be restricted from
+        participation until the issue is resolved to the satisfaction of the University Health Services RN or
+        representative. I agree to abide by the policy as stated above.</p>
+      <div class="sig-line">
+        <div><label>Signature of Parent/Guardian:</label> <span id="safety_signature"
+            class="response-value display-text"></span></div>
+        <div><label>Date:</label> <span id="safety_date" class="response-value display-date"></span></div>
+      </div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 5 Content -->
+    <div id="page5_summary" class="section">
+      <div class="page-number">Page 5 of 7</div>
+      <div class="section-header">Personal, Family, and Emergency Contact Information</div>
+      <div><label>Name of Participant (first & last):</label> <span id="participant_name"
+          class="response-value display-text"></span></div>
+      <div><label>Street Address:</label> <span id="street_address" class="response-value display-text"></span></div>
+      <div><label>Apt. #:</label> <span id="apt_number" class="response-value display-text"></span></div>
+      <div class="row">
+        <div class="col"><label>City:</label> <span id="city" class="response-value display-text"></span></div>
+        <div class="col"><label>State:</label> <span id="state" class="response-value display-text"></span></div>
+        <div class="col"><label>Zip Code:</label> <span id="zip" class="response-value display-text"></span></div>
+      </div>
+      <div class="row">
+        <div class="col"><label>Participant's Cell Phone #:</label> <span id="participant_cell"
+            class="response-value display-tel"></span></div>
+        <div class="col"><label>Participant's Date of Birth:</label> <span id="participant_dob"
+            class="response-value display-date"></span></div>
+        <div class="col"><label>Participant's Gender:</label> <span id="participant_gender"
+            class="response-value display-select"></span></div>
+      </div>
+      <div><label>Name of School:</label> <span id="school" class="response-value display-text"></span></div>
+      <div><label>Participant's Grade:</label> <span id="grade" class="response-value display-text"></span></div>
+      <div><label>Language Spoken at Home:</label> <span id="language_home" class="response-value display-text"></span>
+      </div>
+      <div class="row">
+        <div class="col"><label>Hair Color:</label> <span id="hair_color" class="response-value display-text"></span>
+        </div>
+        <div class="col"><label>Eye Color:</label> <span id="eye_color" class="response-value display-text"></span>
+        </div>
+        <div class="col"><label>Height:</label> <span id="height" class="response-value display-text"></span></div>
+        <div class="col"><label>Weight:</label> <span id="weight" class="response-value display-text"></span></div>
+      </div>
+      <div><label>Can the participant swim?</label> <span id="can_swim" class="response-value display-radio"></span>
+      </div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 6 Content -->
+    <div id="page6_summary" class="section">
+      <div class="page-number">Page 6 of 7</div>
+      <div><label>Parent/Guardian Name (first & last):</label> <span id="guard_name"
+          class="response-value display-text"></span></div>
+      <div><label>Street Address:</label> <span id="guard_street" class="response-value display-text"></span></div>
+      <div><label>Apt. #:</label> <span id="guard_apt" class="response-value display-text"></span></div>
+      <div class="row">
+        <div class="col"><label>City:</label> <span id="guard_city" class="response-value display-text"></span></div>
+        <div class="col"><label>State:</label> <span id="guard_state" class="response-value display-text"></span></div>
+        <div class="col"><label>Zip Code:</label> <span id="guard_zip" class="response-value display-text"></span></div>
+      </div>
+      <div class="row">
+        <div class="col"><label>Home Phone #:</label> <span id="guard_home" class="response-value display-tel"></span>
+        </div>
+        <div class="col"><label>Work Phone #:</label> <span id="guard_work" class="response-value display-tel"></span>
+        </div>
+        <div class="col"><label>Cell Phone #:</label> <span id="guard_cell" class="response-value display-tel"></span>
+        </div>
+      </div>
+
+      <div class="section-header">Emergency Contact #1</div>
+      <div><label>Check here if same as parent/guardian above:</label> <span id="same_as_parent"
+          class="response-value display-checkbox"></span></div>
+      <div><label>Name (first & last):</label> <span id="emergency1_name" class="response-value display-text"></span>
+      </div>
+      <div><label>Street Address:</label> <span id="emergency1_street" class="response-value display-text"></span></div>
+      <div><label>Apt. #:</label> <span id="emergency1_apt" class="response-value display-text"></span></div>
+      <div class="row">
+        <div class="col"><label>City:</label> <span id="emergency1_city" class="response-value display-text"></span>
+        </div>
+        <div class="col"><label>State:</label> <span id="emergency1_state" class="response-value display-text"></span>
+        </div>
+        <div class="col"><label>Zip Code:</label> <span id="emergency1_zip" class="response-value display-text"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><label>Home Phone #:</label> <span id="emergency1_home"
+            class="response-value display-tel"></span></div>
+        <div class="col"><label>Work Phone #:</label> <span id="emergency1_work"
+            class="response-value display-tel"></span></div>
+        <div class="col"><label>Cell Phone #:</label> <span id="emergency1_cell"
+            class="response-value display-tel"></span></div>
+      </div>
+      <div><label>Relationship to Participant:</label> <span id="emergency1_relationship"
+          class="response-value display-text"></span></div>
+
+      <div class="section-header">Emergency Contact #2</div>
+      <div><label>Name (first & last):</label> <span id="emergency2_name" class="response-value display-text"></span>
+      </div>
+      <div><label>Street Address:</label> <span id="emergency2_street" class="response-value display-text"></span></div>
+      <div><label>Apt. #:</label> <span id="emergency2_apt" class="response-value display-text"></span></div>
+      <div class="row">
+        <div class="col"><label>City:</label> <span id="emergency2_city" class="response-value display-text"></span>
+        </div>
+        <div class="col"><label>State:</label> <span id="emergency2_state" class="response-value display-text"></span>
+        </div>
+        <div class="col"><label>Zip Code:</label> <span id="emergency2_zip" class="response-value display-text"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><label>Home Phone #:</label> <span id="emergency2_home"
+            class="response-value display-tel"></span></div>
+        <div class="col"><label>Work Phone #:</label> <span id="emergency2_work"
+            class="response-value display-tel"></span></div>
+        <div class="col"><label>Cell Phone #:</label> <span id="emergency2_cell"
+            class="response-value display-tel"></span></div>
+      </div>
+      <div><label>Relationship to Participant:</label> <span id="emergency2_relationship"
+          class="response-value display-text"></span></div>
+      <div class="sig-line">
+        <div><label>Signature of Parent/Guardian:</label> <span id="emergency2_signature"
+            class="response-value display-text"></span></div>
+        <div><label>Date:</label> <span id="emergency2_date" class="response-value display-date"></span></div>
+      </div>
+
+      <div class="section-header">Health Insurance Information</div>
+      <p>Please include a copy of your child's health insurance card. If you cannot provide the requested health
+        insurance card; please provide the following insurance information:</p>
+      <div><label>Insurance Carrier:</label> <span id="insurance_carrier" class="response-value display-text"></span>
+      </div>
+      <div><label>Policy Number:</label> <span id="policy_number" class="response-value display-text"></span></div>
+      <div><label>Cardholder's Name:</label> <span id="cardholder_name" class="response-value display-text"></span>
+      </div>
+      <div class="sig-line">
+        <div><label>Signature of Parent/Guardian:</label> <span id="insurance_signature"
+            class="response-value display-text"></span></div>
+        <div><label>Date:</label> <span id="insurance_date" class="response-value display-date"></span></div>
+      </div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 7 Content -->
+    <div id="page7_summary" class="section">
+      <div class="page-number">Page 7 of 7</div>
+      <div class="section-header">Release Forms</div>
+      <p><strong>PLEASE READ THE FOLLOWING RELEASES CAREFULLY AND PROVIDE A SIGNATURE FOR EACH SECTION BELOW.</strong>
+      </p>
+
+      <div class="section">
+        <div class="section-header">General Release</div>
+        <p>
+          I, <span id="general_release_name" class="response-value display-text"></span>, as parent or legal
+          guardian of
+          <span id="general_release_participant" class="response-value display-text"></span>, in
+          consideration of my child being allowed to participate in the
+          <span id="general_release_program" class="response-value display-text"></span> Program, on
+          behalf of my child, myself, my family, my heirs, representatives, assigns, executors or administrators, I
+          hereby release and agree to hold UMass Boston, its trustees, directors, officers, employees, servants,
+          representatives, agent licensees, successors and assigns, harmless from and against any and all claims,
+          losses, damages, expenses (including attorneys' fees, and all court and litigation costs) and liability
+          (including statutory liability), resulting from injury and/or death of any person or damage to or loss of any
+          property arising out of or in any way from the <span id="general_release_program_repeat"
+            class="response-value display-text"></span> Program and my child's participation therein.
+        </p>
+        <div class="sig-line">
+          <div><label>Signature of Parent/Guardian:</label> <span id="general_release_signature"
+              class="response-value display-text"></span></div>
+          <div><label>Date:</label> <span id="general_release_date" class="response-value display-date"></span></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">Release to Participate in Program Activities</div>
+        <p>
+          I hereby give permission for my son/daughter to participate in all activities, including field trips in the
+          youth programs including transportation to and from UMass Boston including program related activities from the
+          date of his/her acceptance throughout his/her involvement with the program, and I hereby certify that the
+          statements on this form are true to the best of my knowledge and belief. We further agree to support the
+          administrative rules of the program and to cooperate with the staff to our fullest extent.
+        </p>
+        <div class="sig-line">
+          <div><label>Signature of Parent/Guardian:</label> <span id="activity_signature"
+              class="response-value display-text"></span></div>
+          <div><label>Date:</label> <span id="activity_date" class="response-value display-date"></span></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">Media Release</div>
+        <p>
+          Beginning as of the date of execution of this release, that photographs, whether still or action, videos, film
+          and/or motion pictures (hereinafter "Pictures") and/or audio recordings ("Recordings") may be taken of my
+          child, individually or with others, by or on behalf of UMass Boston in connection with this youth program, and
+          agree that all rights therein shall irrevocably, exclusively, unconditionally and perpetually belong to UMass
+          Boston and that such rights are freely assignable by UMass Boston. I further agree that, without any
+          compensation or notification to or approval by me, the Pictures or Recordings, and website postings may be
+          used, reproduced or otherwise disseminated or published by or on behalf of UMass Boston directly or indirectly
+          for any purpose, including but not limited to advertising and/or promotional purposes, in any manner, and at
+          any time that UMass Boston desires.
+        </p>
+        <p>
+          For good and valuable consideration, receipt of which is hereby acknowledged, I hereby agree to release and
+          discharge UMass Boston, its trustees, directors, officers, employees, servants, representatives, agents,
+          licensees, successors and assigns from any and all claims, demands or causes of action that I may now have or
+          may hereafter have for libel, defamation, invasion of privacy or right of publicity, infringement of copyright
+          or violation of any other right arising out of or relating to any utilization of the Pictures or Recordings.
+        </p>
+        <div class="sig-line">
+          <div><label>Signature of Parent/Guardian:</label> <span id="media_signature"
+              class="response-value display-text"></span></div>
+          <div><label>Date:</label> <span id="media_date" class="response-value display-date"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // Load the form data from localStorage
+    const formData = JSON.parse(localStorage.getItem('youthAppData') || '{}');
+
+    // Function to display form data
+    function displayFormData() {
+      Object.keys(formData).forEach(key => {
+        const element = document.getElementById(key);
+        if (element) {
+          // For radio buttons, the stored value is the value of the selected radio.
+          // For checkboxes, the stored value might be 'on' or its actual value if set.
+          // We need to ensure we display something meaningful.
+          if (formData[key] === 'on' && (element.classList.contains('display-checkbox'))) {
+            element.textContent = "Checked";
+          } else if (key === 'can_swim') { // Explicitly handle radio group by name
+            element.textContent = formData[key] || "Not answered by user";
+          }
+          else {
+            element.textContent = formData[key] || "Not answered by user";
+          }
+        } else {
+          // Fallback for radio buttons or checkboxes where ID might not directly match name
+          // This part might need refinement based on how radio/checkbox values are stored and named
+          const radioElements = document.getElementsByName(key);
+          if (radioElements.length > 0 && radioElements[0].type === 'radio') {
+            // Find the span associated with this radio group - this is tricky
+            // Assuming a convention for the display span if it's different
+            // For 'can_swim', the span ID is 'can_swim'
+            if (document.getElementById(key)) { // Check if a direct ID match exists for the group display
+              document.getElementById(key).textContent = formData[key] || "Not answered by user";
+            }
+          }
+        }
+      });
+    }
+
+    // Function to handle page visibility for page numbers (can be adapted from index.html)
+    function updatePageVisibility() {
+      const sections = document.querySelectorAll('#filled-form-content .section');
+      let lastVisiblePageNumber = null;
+
+      // This logic is primarily for screen display with fixed page numbers
+      if (window.matchMedia && !window.matchMedia('print').matches) {
+        // First, hide all page numbers
+        document.querySelectorAll('#filled-form-content .page-number').forEach(pn => pn.style.display = 'none');
+
+        sections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          const pageNumberElement = section.querySelector('.page-number');
+
+          if (pageNumberElement) {
+            // A section is considered "visible" if its top is above the bottom of the viewport
+            // and its bottom is below the top of the viewport (i.e., it's at least partially in view)
+            // and its top is within the viewport or above it.
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+              lastVisiblePageNumber = pageNumberElement; // Update with the latest one that meets criteria
+            }
+          }
+        });
+
+        if (lastVisiblePageNumber) {
+          lastVisiblePageNumber.style.display = 'block';
+        } else if (sections.length > 0) {
+          // If nothing is strictly "visible" (e.g. scrolled way past or before everything)
+          // and we have sections, default to showing the first page number if scrolled to top,
+          // or last if scrolled to bottom. This part can be tricky.
+          // For simplicity, if nothing found, let's check scroll position.
+          const bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+          const bodyScrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+          const windowHeight = window.innerHeight;
+
+          if (bodyScrollTop + windowHeight >= bodyScrollHeight - 50) { // Near bottom (50px tolerance)
+            const lastSectionPN = sections[sections.length - 1].querySelector('.page-number');
+            if (lastSectionPN) lastSectionPN.style.display = 'block';
+          } else if (bodyScrollTop < 50) { // Near Top
+            const firstSectionPN = sections[0].querySelector('.page-number');
+            if (firstSectionPN) firstSectionPN.style.display = 'block';
+          }
+          // If in between and no section is picked by primary logic, numbers remain hidden.
+        }
+
+      } else {
+        // For print media, CSS handles displaying all page numbers as static blocks.
+        document.querySelectorAll('#filled-form-content .page-number').forEach(pn => {
+          pn.style.display = 'block';
+        });
+      }
+    }
+
+    // Call the functions when the page loads
+    window.onload = function () {
+      displayFormData();
+      updatePageVisibility(); // Initial page number update
+      // Try to trigger Google Translate to re-evaluate the page after dynamic content is added.
+      // This is speculative and might not always work as desired.
+      if (typeof google !== 'undefined' && google.translate && google.translate.TranslateElement) {
+        // If user previously selected a language on index.html, that preference isn't directly passed.
+        // This just re-initializes, user would still need to select language.
+        // googleTranslateElementInit(); // Re-calling might not be what we want, it's already called.
+      }
+    };
+
+    // Update page visibility on scroll
+    window.addEventListener('scroll', updatePageVisibility);
+  </script>
+
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ar,zh-CN,fr,de,hi,it,ja,ko,pt,ru,es,vi',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>

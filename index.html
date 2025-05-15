@@ -1,0 +1,507 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UMass Boston Youth Program Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 18px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #005a9c;
+    }
+
+    .section {
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .section-header {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      text-decoration: underline;
+    }
+
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .col {
+      flex: 1;
+    }
+
+    .button {
+      background-color: #005a9c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+      font-size: 18px;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    .sig-line {
+      margin-top: 20px;
+    }
+
+    .page-number {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #005a9c;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      z-index: 1000;
+    }
+
+    .no-print {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #google_translate_element {
+      margin: 15px 0;
+    }
+
+    .goog-te-combo {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      min-width: 200px;
+    }
+
+    @media print {
+
+      .no-print,
+      .button {
+        display: none;
+      }
+
+      .page-number {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>University of Massachusetts Boston</h1>
+    <h2>Youth Program Application 2025</h2>
+  </header>
+  <div class="translate-box no-print">
+    <h2>Translate this form</h2>
+    <p>
+      Select your preferred language from the dropdown menu below to translate
+      this form. An English option is provided so you can switch back anytime.
+    </p>
+    <div id="google_translate_element"></div>
+    <p>
+      <strong>Note:</strong> You can fill out the form in your preferred language, but you must submit it electronically
+      using the "Submit Application" button below.
+    </p>
+    <p>
+      <strong>Important:</strong> After submitting, you will be taken to a summary page where you can:
+    </p>
+    <ul>
+      <li>If you filled out the form in another language: Use the translation tool on the summary page to convert all
+        your responses to
+        English, then print the form.</li>
+      <li>If you filled out the form in English: Simply print the form directly from the summary page.</li>
+    </ul>
+    <p>The department requires the form to be submitted in English, so please make sure to translate and print the
+      English
+      version from the summary page.</p>
+  </div>
+
+  <form id="application-form" onsubmit="return submitForm()">
+    <!-- Page 1 -->
+    <div id="page1" class="section">
+      <div class="page-number">Page 1 of 7</div>
+      <div class="section-header">Application Instructions</div>
+      <label>Participant's Name: <input type="text" name="instr_participant_name" required /></label>
+      <label>Parent/Guardian Name (print): <input type="text" name="instr_parent_name" required /></label>
+      <div class="row">
+        <div class="col"><label>Program Name: <input type="text" name="instr_program_name" required /></label></div>
+        <div class="col"><label>Date Submitted: <input type="date" name="instr_date_submitted" required /></label></div>
+      </div>
+      <p>If you are applying to a youth program at the University of Massachusetts Boston, please complete and mail the
+        completed application packet to the address below:</p>
+      <p><input type="text" name="instr_mail_program" placeholder="Program Name" required /></p>
+      <pre>University of Massachusetts Boston
+100 Morrissey Boulevard
+Boston, MA 02125</pre>
+      <p>Failure to complete all forms in the application may result in your child not being accepted into the youth
+        program.</p>
+      <p>Policies and Guidelines – Pg. 3</p>
+      <p>Personal, Family, and Emergency Contact Information – Pgs. 5-6</p>
+      <p>Release Forms – Pg. 7</p>
+      <p>Health History Packet</p>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 2 -->
+    <div id="page2" class="section">
+      <div class="page-number">Page 2 of 7</div>
+      <div class="section-header">Permission and Certification</div>
+      <p>I, the undersigned, hereby give my permission for my son/daughter to participate in all the activities of the
+        <input type="text" name="perm_program_name" placeholder="Program Name" required /> Program at UMass Boston from
+        the date of his/her acceptance throughout his/her involvement with the program.
+      </p>
+      <p>We (participant and I) agree to support the administrative rules of the <input type="text"
+          name="perm_program_name_repeat" placeholder="Program Name" required /> Program, the below referenced UMass
+        Boston policies and guidelines, and to cooperate with the staff to our fullest extent.</p>
+      <p>Further, by signing below, I attest to the fact that all of the information provided by me or any other person
+        on this application is true and complete to the best of my knowledge.</p>
+      <div class="section-header">Policies and Guidelines</div>
+      <p><strong>Permission to Participate:</strong> When you signed your child's medical form, you gave permission for
+        your child to participate in all program activities. If you wish for your child to be restricted from any
+        activity, please notify us in writing prior to your child's program session. Please note that it is not our
+        policy to force any child to participate in an activity. We do our best to make the activity enjoyable so your
+        child will wish to participate.</p>
+      <p><strong>Medical Concerns:</strong> All participants are required to have a completed application packet
+        including UMass Boston's health history, immunizations, consent to treat minor patients, and authorization to
+        administer medication forms on file before the program begins. Please be sure that you complete these forms and
+        that your child's healthcare provider has signed that a physical examination has been conducted within the last
+        24 months. Please provide us with as much information as possible concerning your child's medical history,
+        allergies, medications, and any special needs. All medical forms must include an up-to-date immunization record
+        and must be signed by a healthcare provider. If these forms are not received at least 3 weeks prior to the
+        program start date your child may not be allowed to start the program.</p>
+      <p><strong>Medication:</strong> Every effort should be made to administer routine medications at home in order to
+        prevent disruption in your child's daily program activities. However, if your healthcare provider believes that
+        it is in the best medical interest of your child to administer them during the program's hours, please submit
+        the completed Authorization to Administer Medication form. A separate form must be completed for each
+        medication. State law does not permit administration of medication during the program hours without written
+        authority by the prescribing healthcare provider. Youth program participants are at no time allowed to carry
+        any kind of medication, be administered medication without official written directive from the prescribing
+        healthcare provider or take medication without direct youth program supervision.</p>
+      <p><strong>Weather Adjustments:</strong> Whenever possible, we bring outdoor activities into air-conditioned
+        facilities, or to cool, shaded areas. Our first concern is for your child's safety; therefore, we reserve the
+        right to take the following actions in very hot weather: reduce physical activities, substitute outdoor
+        activities for sedentary activities, and provide activities unrelated to your child's specialty (e.g., movies).
+      </p>
+      <p><strong>Inappropriate Behavior:</strong> UMass Boston reserves the right to dismiss any participant who acts in
+        an inappropriate or detrimental manner including bullying, harassing, intimidating, or threatening to other
+        individuals.</p>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 3 -->
+    <div id="page3" class="section">
+      <div class="page-number">Page 3 of 7</div>
+      <p><strong>Medical Notification:</strong> It is our policy to notify you if your child becomes ill during the
+        youth program or suffers an injury other than minor bumps, bruises or scrapes.</p>
+      <p><strong>Valuables:</strong> We recommend that program participants not bring large sums of money or other
+        valuables to UMass Boston. The University is not responsible for lost or stolen personal items.</p>
+      <p><strong>Sunscreen:</strong> The use of sunscreen is highly recommended by University Health Services. It is
+        best to apply sunscreen to your child before he or she leaves home in the morning. You may wish to send along
+        additional sunscreen to be applied later in the day.</p>
+      <p><strong>Inappropriate Behavior:</strong> UMass Boston reserves the right to dismiss any participant who acts in
+        an inappropriate or detrimental manner including bullying, harassing, intimidating, or threatening to other
+        individuals.</p>
+      <div class="sig-line">
+        <label>Signature of Parent/Guardian: <input type="text" name="gen_signature" required /></label>
+        <label>Date: <input type="date" name="gen_date" required /></label>
+      </div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 4 -->
+    <div id="page4" class="section">
+      <div class="page-number">Page 4 of 7</div>
+      <div class="section-header">Personal Safety Policy</div>
+      <p>University Health Services reserves the right to limit or restrict a participant's ability to carry any item,
+        or wear clothing, deemed to pose a safety risk to the individual and/or others while participating in the
+        program. This includes, but is not limited to, weapons (whether real or fake), explosives, sharp objects
+        (including medical devices), inappropriate clothing or clothing with graphics deemed to be offensive. If the
+        participant or his/her parent or guardian refuses to abide by this policy the participant may be restricted from
+        participation until the issue is resolved to the satisfaction of the University Health Services RN or
+        representative. I agree to abide by the policy as stated above.</p>
+      <div class="sig-line">
+        <label>Signature of Parent/Guardian: <input type="text" name="safety_signature" required /></label>
+        <label>Date: <input type="date" name="safety_date" required /></label>
+      </div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 5 -->
+    <div id="page5" class="section">
+      <div class="page-number">Page 5 of 7</div>
+      <div class="section-header">Personal, Family, and Emergency Contact Information</div>
+      <label>Name of Participant (first & last): <input type="text" name="participant_name" required /></label>
+      <label>Street Address: <input type="text" name="street_address" required /></label>
+      <label>Apt. #: <input type="text" name="apt_number" /></label>
+      <div class="row">
+        <div class="col"><label>City: <input type="text" name="city" required /></label></div>
+        <div class="col"><label>State: <input type="text" name="state" required /></label></div>
+        <div class="col"><label>Zip Code: <input type="text" name="zip" required /></label></div>
+      </div>
+      <div class="row">
+        <div class="col"><label>Participant's Cell Phone #: <input type="tel" name="participant_cell" /></label></div>
+        <div class="col"><label>Participant's Date of Birth: <input type="date" name="participant_dob"
+              required /></label></div>
+        <div class="col"><label>Participant's Gender: <select name="participant_gender" required>
+              <option value="">Select</option>
+              <option value="male">male</option>
+              <option value="female">female</option>
+            </select></label></div>
+      </div>
+      <label>Name of School: <input type="text" name="school" /></label>
+      <label>Participant's Grade: <input type="text" name="grade" /></label>
+      <label>Language Spoken at Home: <input type="text" name="language_home" /></label>
+      <div class="row">
+        <div class="col"><label>Hair Color: <input type="text" name="hair_color" /></label></div>
+        <div class="col"><label>Eye Color: <input type="text" name="eye_color" /></label></div>
+        <div class="col"><label>Height: <input type="text" name="height" /></label></div>
+        <div class="col"><label>Weight: <input type="text" name="weight" /></label></div>
+      </div>
+      <label>Can the participant swim? <label><input type="radio" name="can_swim" value="Yes" /> Yes</label>
+        <label><input type="radio" name="can_swim" value="No" /> No</label></label>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 6 -->
+    <div id="page6" class="section">
+      <div class="page-number">Page 6 of 7</div>
+      <label>Parent/Guardian Name (first & last): <input type="text" name="guard_name" required /></label>
+      <label>Street Address: <input type="text" name="guard_street" required /></label>
+      <label>Apt. #: <input type="text" name="guard_apt" /></label>
+      <div class="row">
+        <div class="col"><label>City: <input type="text" name="guard_city" required /></label></div>
+        <div class="col"><label>State: <input type="text" name="guard_state" required /></label></div>
+        <div class="col"><label>Zip Code: <input type="text" name="guard_zip" required /></label></div>
+      </div>
+      <div class="row">
+        <div class="col"><label>Home Phone #: <input type="tel" name="guard_home" /></label></div>
+        <div class="col"><label>Work Phone #: <input type="tel" name="guard_work" /></label></div>
+        <div class="col"><label>Cell Phone #: <input type="tel" name="guard_cell" /></label></div>
+      </div>
+
+      <div class="section-header">Emergency Contact #1</div>
+      <label><input type="checkbox" name="same_as_parent" /> Check here if same as parent/guardian above.</label>
+      <label>Name (first & last): <input type="text" name="emergency1_name" required /></label>
+      <label>Street Address: <input type="text" name="emergency1_street" required /></label>
+      <label>Apt. #: <input type="text" name="emergency1_apt" /></label>
+      <div class="row">
+        <div class="col"><label>City: <input type="text" name="emergency1_city" required /></label></div>
+        <div class="col"><label>State: <input type="text" name="emergency1_state" required /></label></div>
+        <div class="col"><label>Zip Code: <input type="text" name="emergency1_zip" required /></label></div>
+      </div>
+      <div class="row">
+        <div class="col"><label>Home Phone #: <input type="tel" name="emergency1_home" /></label></div>
+        <div class="col"><label>Work Phone #: <input type="tel" name="emergency1_work" /></label></div>
+        <div class="col"><label>Cell Phone #: <input type="tel" name="emergency1_cell" /></label></div>
+      </div>
+      <label>Relationship to Participant: <input type="text" name="emergency1_relationship" required /></label>
+
+      <div class="section-header">Emergency Contact #2</div>
+      <label>Name (first & last): <input type="text" name="emergency2_name" required /></label>
+      <label>Street Address: <input type="text" name="emergency2_street" required /></label>
+      <label>Apt. #: <input type="text" name="emergency2_apt" /></label>
+      <div class="row">
+        <div class="col"><label>City: <input type="text" name="emergency2_city" required /></label></div>
+        <div class="col"><label>State: <input type="text" name="emergency2_state" required /></label></div>
+        <div class="col"><label>Zip Code: <input type="text" name="emergency2_zip" required /></label></div>
+      </div>
+      <div class="row">
+        <div class="col"><label>Home Phone #: <input type="tel" name="emergency2_home" /></label></div>
+        <div class="col"><label>Work Phone #: <input type="tel" name="emergency2_work" /></label></div>
+        <div class="col"><label>Cell Phone #: <input type="tel" name="emergency2_cell" /></label></div>
+      </div>
+      <label>Relationship to Participant: <input type="text" name="emergency2_relationship" required /></label>
+      <div class="sig-line">
+        <label>Signature of Parent/Guardian: <input type="text" name="emergency2_signature" required /></label>
+        <label>Date: <input type="date" name="emergency2_date" required /></label>
+      </div>
+
+      <div class="section-header">Health Insurance Information</div>
+      <p>Please include a copy of your child's health insurance card. If you cannot provide the requested health
+        insurance card; please provide the following insurance information:</p>
+      <label>Insurance Carrier: <input type="text" name="insurance_carrier" /></label>
+      <label>Policy Number: <input type="text" name="policy_number" /></label>
+      <label>Cardholder's Name: <input type="text" name="cardholder_name" /></label>
+      <div class="sig-line">
+        <label>Signature of Parent/Guardian: <input type="text" name="insurance_signature" required /></label>
+        <label>Date: <input type="date" name="insurance_date" required /></label>
+      </div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- Page 7 -->
+    <div id="page7" class="section">
+      <div class="page-number">Page 7 of 7</div>
+      <div class="section-header">Release Forms</div>
+      <p><strong>PLEASE READ THE FOLLOWING RELEASES CAREFULLY AND PROVIDE A SIGNATURE FOR EACH SECTION BELOW.</strong>
+      </p>
+
+      <!-- General Release -->
+      <div class="section">
+        <div class="section-header">General Release</div>
+        <p>
+          I, <input type="text" name="general_release_name" placeholder="(print)" required />, as parent or legal
+          guardian of
+          <input type="text" name="general_release_participant" placeholder="(participant's name)" required />, in
+          consideration of my child being allowed to participate in the
+          <input type="text" name="general_release_program" placeholder="(insert program name)" required /> Program, on
+          behalf of my child, myself, my family, my heirs, representatives, assigns, executors or administrators, I
+          hereby release and agree to hold UMass Boston, its trustees, directors, officers, employees, servants,
+          representatives, agent licensees, successors and assigns, harmless from and against any and all claims,
+          losses, damages, expenses (including attorneys' fees, and all court and litigation costs) and liability
+          (including statutory liability), resulting from injury and/or death of any person or damage to or loss of any
+          property arising out of or in any way from the <input type="text" name="general_release_program_repeat"
+            placeholder="(insert program name)" required /> Program and my child's participation therein.
+        </p>
+        <div class="sig-line">
+          <label>Signature of Parent/Guardian: <input type="text" name="general_release_signature" required /></label>
+          <label>Date: <input type="date" name="general_release_date" required /></label>
+        </div>
+      </div>
+
+      <!-- Release to Participate in Program Activities -->
+      <div class="section">
+        <div class="section-header">Release to Participate in Program Activities</div>
+        <p>
+          I hereby give permission for my son/daughter to participate in all activities, including field trips in the
+          youth programs including transportation to and from UMass Boston including program related activities from the
+          date of his/her acceptance throughout his/her involvement with the program, and I hereby certify that the
+          statements on this form are true to the best of my knowledge and belief. We further agree to support the
+          administrative rules of the program and to cooperate with the staff to our fullest extent.
+        </p>
+        <div class="sig-line">
+          <label>Signature of Parent/Guardian: <input type="text" name="activity_signature" required /></label>
+          <label>Date: <input type="date" name="activity_date" required /></label>
+        </div>
+      </div>
+
+      <!-- Media Release -->
+      <div class="section">
+        <div class="section-header">Media Release</div>
+        <p>
+          Beginning as of the date of execution of this release, that photographs, whether still or action, videos, film
+          and/or motion pictures (hereinafter "Pictures") and/or audio recordings ("Recordings") may be taken of my
+          child, individually or with others, by or on behalf of UMass Boston in connection with this youth program, and
+          agree that all rights therein shall irrevocably, exclusively, unconditionally and perpetually belong to UMass
+          Boston and that such rights are freely assignable by UMass Boston. I further agree that, without any
+          compensation or notification to or approval by me, the Pictures or Recordings, and website postings may be
+          used, reproduced or otherwise disseminated or published by or on behalf of UMass Boston directly or indirectly
+          for any purpose, including but not limited to advertising and/or promotional purposes, in any manner, and at
+          any time that UMass Boston desires.
+        </p>
+        <p>
+          For good and valuable consideration, receipt of which is hereby acknowledged, I hereby agree to release and
+          discharge UMass Boston, its trustees, directors, officers, employees, servants, representatives, agents,
+          licensees, successors and assigns from any and all claims, demands or causes of action that I may now have or
+          may hereafter have for libel, defamation, invasion of privacy or right of publicity, infringement of copyright
+          or violation of any other right arising out of or relating to any utilization of the Pictures or Recordings.
+        </p>
+        <div class="sig-line">
+          <label>Signature of Parent/Guardian: <input type="text" name="media_signature" required /></label>
+          <label>Date: <input type="date" name="media_date" required /></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-print" style="text-align:center; margin-top:20px;">
+      <button type="submit" class="button">Submit Application</button>
+    </div>
+  </form>
+
+  <script>
+    function submitForm() {
+      const data = {};
+      document.querySelectorAll('#application-form input, #application-form select').forEach(i => {
+        if ((i.type === 'radio' || i.type === 'checkbox') && !i.checked) return;
+        data[i.name] = i.value;
+      });
+      localStorage.setItem('youthAppData', JSON.stringify(data));
+      window.location.href = 'summary.html';
+      return false;
+    }
+
+    function updatePageVisibility() {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top <= window.innerHeight) {
+          const pageNumber = section.querySelector('.page-number');
+          if (pageNumber) {
+            document.querySelectorAll('.page-number').forEach(pn => pn.style.display = 'none');
+            pageNumber.style.display = 'block';
+          }
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updatePageVisibility);
+    window.addEventListener('load', updatePageVisibility);
+  </script>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ar,zh-CN,fr,de,hi,it,ja,ko,pt,ru,es,vi',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>
